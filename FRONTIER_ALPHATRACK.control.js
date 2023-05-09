@@ -4,7 +4,7 @@ load("FRONTIER_ALPHATRACK_var.js");
 load("FRONTIER_ALPHATRACK.display.js");
 load("FRONTIER_ALPHATRACK_encoders.js");
 
-host.defineController("Frontier", "AlphaTrack", "1.0", "253256C0-EB4A-4ADF-837B-5EEE9F07E62E");
+host.defineController("Frontier", "AlphaTrack", "1.0", "253256C0-EB4A-4ADF-837B-5EEE9F07E62E", "Alexander Polyakov PPK");
 host.defineMidiPorts(1, 1);
 host.addDeviceNameBasedDiscoveryPair(["Frontier AlphaTrack"],["Frontier AlphaTrack"]);
 host.addDeviceNameBasedDiscoveryPair(["Frontier AlphaTrack MIDI 1"],["Frontier AlphaTrack MIDI 1"]);
@@ -28,8 +28,7 @@ function init(){
 	sendSysex(NATIVE_MODE); // Set to native mode
 	sendNoteOn(0, FUNCTION.F1, 0);
 	
-	clearLCD();
-	writeToLCD(0, 0, "     VST.RU     ", TOTAL_DISPLAY_SIZE);
+	cpoyright();
 	
 	host.getMidiInPort(0).setMidiCallback(onMidi);
 
@@ -438,8 +437,7 @@ function prevTrack(){
 }
 
 function exit(){
-	clearLCD();
-	writeToLCD(0, 0, "     VST.RU     ", TOTAL_DISPLAY_SIZE);
+	cpoyright();
 	for ( var j = 0; j < 8; j++)
 	{
 		sendSysex(SYSEX_HDR + "20 0" + j + "00 f7");
@@ -462,4 +460,11 @@ function makeIndexedFunction(index, f){
 	return function(value){
 		f(index, value);
 	};
+}
+
+function cpoyright()
+{
+	clearLCD();
+	writeToLCD(0, 0, "c 2023 Alexander", TOTAL_DISPLAY_SIZE);
+	writeToLCD(1, 0, "Polyakov PPK    ", TOTAL_DISPLAY_SIZE);
 }
