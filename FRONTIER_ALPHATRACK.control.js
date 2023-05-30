@@ -466,5 +466,5 @@ function cpoyright()
 {
 	clearLCD();
 	writeToLCD(0, 0, "c 2023 Alexander", TOTAL_DISPLAY_SIZE);
-	writeToLCD(1, 0, "Polyakov PPK    ", TOTAL_DISPLAY_SIZE);
+	writeToLCD(1, 0, "Polyakov PPK.FM ", TOTAL_DISPLAY_SIZE);
 }
